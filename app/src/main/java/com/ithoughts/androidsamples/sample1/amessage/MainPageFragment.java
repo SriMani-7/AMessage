@@ -18,13 +18,28 @@ import java.util.LinkedList;
 public class MainPageFragment extends Fragment {
 
     private FragmentMainpageBinding mainpageBinding;
+    private static final String ARG_PARAM1 = "param1";
+    private int which;
+    public static final int CHATS = 0,GROUPS = 1,STATUS = 2,CALLS = 3;
 
     private MainPageFragment(){
 
     }
 
-    public static MainPageFragment getInstance() {
-        return new MainPageFragment();
+    public static MainPageFragment getInstance(int param) {
+        MainPageFragment mainPageFragment = new MainPageFragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_PARAM1,param);
+        mainPageFragment.setArguments(args);
+        return mainPageFragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            which = getArguments().getInt(ARG_PARAM1);
+        }
     }
 
     @Nullable
@@ -39,41 +54,16 @@ public class MainPageFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         RecyclerView host = mainpageBinding.recyclerview;
         host.setLayoutManager(new LinearLayoutManager(view.getContext(),LinearLayoutManager.VERTICAL,false));
+        LinkedList<DataCard> people = new LinkedList<>();
+        switch (which){
+            case CHATS:
 
-        LinkedList<MPerson> people = new LinkedList<>();
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        people.add(new MPerson("ABC","Hi"));
-        PersonAdapter personAdapter = new PersonAdapter(people);
+                break;
+            case GROUPS: break;
+            case CALLS: break;
+            case STATUS: break;
+        }
+        PersonAdapter personAdapter = new PersonAdapter(people, which);
         host.setAdapter(personAdapter);
     }
 }

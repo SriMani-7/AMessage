@@ -6,7 +6,10 @@
         <entry key="..\:/Ithoughts/androidsamples/AMessage/AMessage/app/src/main/res/drawable/round_shape.xml" value="0.2703125" />
         <entry key="..\:/Ithoughts/androidsamples/AMessage/AMessage/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Ithoughts/androidsamples/AMessage/AMessage/app/src/main/res/layout/fragment_mainpage.xml" value="0.25416666666666665" />
-        <entry key="..\:/Ithoughts/androidsamples/AMessage/AMessage/app/src/main/res/layout/viewholder_person.xml" value="0.536" />
+        <entry key="..\:/Ithoughts/androidsamples/AMessage/AMessage/app/src/main/res/layout/viewholder_call.xml" value="0.4" />
+        <entry key="..\:/Ithoughts/androidsamples/AMessage/AMessage/app/src/main/res/layout/viewholder_chat.xml" value="0.4" />
+        <entry key="..\:/Ithoughts/androidsamples/AMessage/AMessage/app/src/main/res/layout/viewholder_person.xml" value="0.72" />
+        <entry key="..\:/Ithoughts/androidsamples/AMessage/AMessage/app/src/main/res/layout/viewholder_status.xml" value="0.72" />
         <entry key="..\:/Ithoughts/androidsamples/AMessage/AMessage/app/src/main/res/menu/main_menu.xml" value="0.25416666666666665" />
       </map>
     </option>

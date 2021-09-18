@@ -2,50 +2,54 @@ package com.ithoughts.androidsamples.sample1.amessage;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.LinkedList;
 
-public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonViewHolder> {
+public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonHolder> {
 
-    LinkedList<MPerson> mPeople;
-    public PersonAdapter(LinkedList<MPerson> people) {
-        this.mPeople = people;
+    LinkedList<DataCard> dataCards;
+    private final int which;
+
+    public PersonAdapter(LinkedList<DataCard> people, int which) {
+        this.dataCards = people;
+        this.which = which;
     }
 
     @NonNull
     @Override
-    public PersonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = View.inflate(parent.getContext(), R.layout.viewholder_person,null);
-        return new PersonViewHolder(view);
+    public PersonHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        switch (which){
+            case MainPageFragment.CHATS:
+            case MainPageFragment.GROUPS:
+                View view = View.inflate(parent.getContext(), R.layout.viewholder_chat, null);
+                return new ChatViewHolder(view);
+            case MainPageFragment.CALLS:
+                view = View.inflate(parent.getContext(), R.layout.viewholder_call, null);
+                return new CallViewHolder(view);
+        }
+        View view = View.inflate(parent.getContext(), R.layout.viewholder_status, null);
+        return new StatusViewHolder(view);
+
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PersonViewHolder holder, int position) {
-        holder.set(mPeople.get(position));
+    public void onBindViewHolder(@NonNull PersonHolder holder, int position) {
+        holder.set(dataCards.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mPeople.size();
+        return dataCards.size();
     }
 
-    public static class PersonViewHolder extends RecyclerView.ViewHolder{
+    public static abstract class PersonHolder extends RecyclerView.ViewHolder{
 
-        private final TextView name;
-        private final TextView message;
-        public PersonViewHolder(@NonNull View itemView) {
+        public PersonHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.person_name);
-            message = itemView.findViewById(R.id.last_message);
         }
-
-        public void set(MPerson mPerson) {
-            name.setText(mPerson.getName());
-            message.setText(mPerson.getCaption());
-        }
+        public abstract void set(DataCard dataCard);
     }
 }

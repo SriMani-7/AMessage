@@ -12,7 +12,7 @@ public class PagesAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public MainPageFragment createFragment(int position) {
-        return MainPageFragment.getInstance();
+        return MainPageFragment.getInstance(position);
     }
 
     @Override
