@@ -10,9 +10,7 @@ public class DataCard {
     private Pointer pointer;
     private Bitmap displayPicture;
 
-    public DataCard(String name, String caption){
-        this.message = caption;
-        this.name = name;
+    public DataCard(){
     }
 
     public String getMessage() { return message; }
@@ -25,8 +23,8 @@ public class DataCard {
     public void setTime(String time) {
         this.time = time;
     }
-    public int getUnread() {
-        return unread;
+    public String getunread() {
+        return Integer.toString(unread);
     }
     public void setUnread(int unread) {
         this.unread = unread;

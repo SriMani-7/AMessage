@@ -2,9 +2,8 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="oval">
-            <solid android:color="#E9EAD6"/>
+            <size android:height="56dp" android:width="56dp"/>
+            <solid android:color="#bbb"/>
         </shape>
     </item>
-    <item
-        android:drawable="@drawable/ic_baseline_person_24" android:top="5dp" android:bottom="5dp" android:left="5dp" android:right="5dp"/>
 </layer-list>

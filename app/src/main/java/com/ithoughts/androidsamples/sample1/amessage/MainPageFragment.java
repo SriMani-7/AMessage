@@ -1,6 +1,7 @@
 package com.ithoughts.androidsamples.sample1.amessage;
 
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ithoughts.androidsamples.sample1.amessage.databinding.FragmentMainpageBinding;
 
+import java.util.Date;
 import java.util.LinkedList;
+import java.util.Random;
 
 public class MainPageFragment extends Fragment {
 
@@ -54,16 +57,7 @@ public class MainPageFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         RecyclerView host = mainpageBinding.recyclerview;
         host.setLayoutManager(new LinearLayoutManager(view.getContext(),LinearLayoutManager.VERTICAL,false));
-        LinkedList<DataCard> people = new LinkedList<>();
-        switch (which){
-            case CHATS:
-
-                break;
-            case GROUPS: break;
-            case CALLS: break;
-            case STATUS: break;
-        }
-        PersonAdapter personAdapter = new PersonAdapter(people, which);
+        PersonAdapter personAdapter = new PersonAdapter(which);
         host.setAdapter(personAdapter);
     }
 }
